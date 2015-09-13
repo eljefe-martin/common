@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <style>
+    
+     
+     
+      
+      .container {
+        width: 100%;
+          
+      }
+      
+      .main-col {
+        width: 2.25in;
+          
+          float: left;
+      }
+      
+      .main-col, .dow-col {
+        height: .667in;
+        border-right-style: solid;
+        border-right-width: 1px; 
+       
+      }
+      
+       .main-col-header, .dow-col-header {
+        height: .25in;
+        border-right-style: solid;
+        border-right-width: 1px;  
+        border-bottom: 1px solid;   
+      }
+      
+      .main-col-header {
+        width: 2.25in;
+          float:left;
+      }
+      
+      .dow-col-header {
+        width: 1.125in;
+          float:left;
+      }
+      
+      .dow-col {
+        width: 1.125in;
+        float:left;
+         
+      }
+      
+      .sch_detail {
+        height: .667in;
+      
+      }
+      
+/*
+      .row {
+            max-width: 972px;
+           
+        }
+*/
+     
+      .employee-detail { 
+          width: 100%;
+          max-width: 972px;
+          min-width: 972px;
+          margin: 5px auto;  
+          background-color: #DDD;
+          border-radius: 5px;
+      }
+      
+  
+
+      /* float clearfix */
+      .group:after {
+    content: "";
+    display: table;
+    clear: both;
+
+}
+ 
+      .employee {
+        height: .222in;
+        width: 1.25in; 
+        margin: 1px 1px 5px 1px; 
+        
+          
+          
+      }
+      
+      .shift {
+        height: .222in;  
+      }
+     
+      .sort {
+        height: .222in;
+        width: .25in;  
+        text-align: center;
+            
+      }
+      
+      .form-group {
+        
+      }
+      
+      .time-select {
+        width: .75in;
+        font-size: 7pt;  
+        padding: 0;
+      }    
+      
+      .dow-comment {
+        height: .222in;
+        width: 1.1in; 
+        margin-bottom: 5px;  
+      
+      }
+      
+      .dow-hrs {
+        display:inline-block; 
+        width:.25in; 
+        text-align: center;
+      }
+      
+      .dow-hour-type {
+        width: .3in;
+        font-size: 7pt;  
+      }
+      
+      .schedule-header {
+        max-width: 972px;
+        min-width: 972px;  
+          background-color: green;
+          margin: 0 auto;
+      }
+      
+      .schedule-header .row {
+        width: 100%;
+          background-color: #aaa;
+          margin: 0 auto;
+      }
+  </style>    
+</head>
+<body ng-controller="myCtrl">
+<!--Header Section    -->
+<div class="schedule-header">
+    <div clsss="container">
+        <div class="row">
+            <h1>{{ message }}</h1>
+            <input type="button" class="btn btn-primary" ng-click="addDetail()" value="add">
+        </div>
+        <div class="row">
+            <div class="main-col-header"><b>Team Member:</b></div>
+            <div class="dow-col-header"><b>Monday:</b></div>
+            <div class="dow-col-header"></div>
+            <div class="dow-col-header"></div>
+            <div class="dow-col-header"></div>
+            <div class="dow-col-header"></div>
+            <div class="dow-col-header"></div>
+            <div class="dow-col-header"></div>
+        </div>
+    </div>    
+    
+</div>    
+<!--Detial Section-->
+<div class="employee-detail" ng-repeat="tm in teamMembers">
+<div class="container">
+<div class="row sch_detail">
+    <form class="form-inline" role="form">
+        <div class="form-group">
+            <div class="main-col">
+                <div class="container" style="width:100%">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="row">
+                                <input type="text" class="employee" ng-model="tm">
+                                
+                            </div>
+                            <div class="row">
+                                <label>Shift:</label>
+                                <select>
+                                    <option>Day</option>
+                                    <option>Swing</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div style="text-align:right" class="col-sm-6">
+                         <div class="row"><b>Start:</b></div>
+                             <div class="row"><b>End:</b></div>
+                            <div class="row"><b>Comment:</b></div>
+                        </div>    
+                        
+                    </div>
+                   
+                    
+                </div>
+            </div>
+            <div class="dow-col">
+                <div class="container">
+                     <div class="row">
+                        <select class="time-select">
+                            <option>12:00AM</option>
+                        </select>
+                         <div class="dow-hrs">8</div>
+                    </div>
+                    <div class="row">
+                        <select class="time-select">
+                            <option>12:00AM</option>
+                        </select>
+                        <input type="text" class="dow-hour-type" value="REG">
+                    </div>
+                    <div class="row">
+                        <input type="text" class="mon-desc dow-comment">
+                    </div>
+                </div>        
+                
+            </div>
+            <div class="dow-col">
+                <div class="container">
+                     <div class="row">
+                        <select class="time-select">
+                            <option>12:00AM</option>
+                        </select>
+                         <div class="dow-hrs">8</div>
+                    </div>
+                    <div class="row">
+                        <select class="time-select">
+                            <option>12:00AM</option>
+                        </select>
+                        <input type="text" class="dow-hour-type" value="REG">
+                    </div>
+                    <div class="row">
+                        <input type="text" class="mon-desc dow-comment">
+                    </div>
+                </div>        
+                
+            </div>
+            <div class="dow-col">
+                <div class="container">
+                     <div class="row">
+                        <select class="time-select">
+                            <option>12:00AM</option>
+                        </select>
+                         <div class="dow-hrs">8</div>
+                    </div>
+                    <div class="row">
+                        <select class="time-select">
+                            <option>12:00AM</option>
+                        </select>
+                        <input type="text" class="dow-hour-type" value="REG">
+                    </div>
+                    <div class="row">
+                        <input type="text" class="mon-desc dow-comment">
+                    </div>
+                </div>        
+                
+            </div>
+            <div class="dow-col">
+                <div class="container">
+                     <div class="row">
+                        <select class="time-select">
+                            <option>12:00AM</option>
+                        </select>
+                         <div class="dow-hrs">8</div>
+                    </div>
+                    <div class="row">
+                        <select class="time-select">
+                            <option>12:00AM</option>
+                        </select>
+                        <input type="text" class="dow-hour-type" value="REG">
+                    </div>
+                    <div class="row">
+                        <input type="text" class="mon-desc dow-comment">
+                    </div>
+                </div>        
+                
+            </div>
+            <div class="dow-col">
+                <div class="container">
+                     <div class="row">
+                        <select class="time-select">
+                            <option>12:00AM</option>
+                        </select>
+                         <div class="dow-hrs">8</div>
+                    </div>
+                    <div class="row">
+                        <select class="time-select">
+                            <option>12:00AM</option>
+                        </select>
+                        <input type="text" class="dow-hour-type" value="REG">
+                    </div>
+                    <div class="row">
+                        <input type="text" class="mon-desc dow-comment">
+                    </div>
+                </div>        
+                
+            </div>
+            <div class="dow-col">
+                <div class="container">
+                     <div class="row">
+                        <select class="time-select">
+                            <option>12:00AM</option>
+                        </select>
+                         <div class="dow-hrs">8</div>
+                    </div>
+                    <div class="row">
+                        <select class="time-select">
+                            <option>12:00AM</option>
+                        </select>
+                        <input type="text" class="dow-hour-type" value="REG">
+                    </div>
+                    <div class="row">
+                        <input type="text" class="mon-desc dow-comment">
+                    </div>
+                </div>        
+                
+            </div>
+            <div class="dow-col">
+                <div class="container">
+                     <div class="row">
+                        <select class="time-select">
+                            <option>12:00AM</option>
+                        </select>
+                         <div class="dow-hrs">8</div>
+                    </div>
+                    <div class="row">
+                        <select class="time-select">
+                            <option>12:00AM</option>
+                        </select>
+                        <input type="text" class="dow-hour-type" value="REG">
+                    </div>
+                    <div class="row">
+                        <input type="text" class="mon-desc dow-comment">
+                    </div>
+                </div>        
+                
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+</div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
