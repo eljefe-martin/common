@@ -1,4 +1,5 @@
 Notes for grunt--
+adding a comment
 
 install grunt in the root project folder using --save-dev
 
